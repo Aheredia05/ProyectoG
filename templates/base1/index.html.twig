@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Base1 index{% endblock %}
+
+{% block body %}
+    <h1>Base1 index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Idbase1</th>
+                <th>Name</th>
+                <th>Lastname</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for base1 in base1s %}
+            <tr>
+                <td>{{ base1.id }}</td>
+                <td>{{ base1.idbase1 }}</td>
+                <td>{{ base1.name }}</td>
+                <td>{{ base1.lastname }}</td>
+                <td>
+                    <a href="{{ path('base1_show', {'id': base1.id}) }}">show</a>
+                    <a href="{{ path('base1_edit', {'id': base1.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('base1_new') }}">Create new</a>
+{% endblock %}
